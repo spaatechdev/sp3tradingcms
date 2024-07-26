@@ -1,0 +1,8 @@
+# created by virtualenv automatically
+venv/
+.idea/
+django_project/.env
+*/__pycache__/
+*/migrations/
+manage.py
+django_project/__init__.py
