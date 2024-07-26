@@ -4,5 +4,5 @@ venv/
 django_project/.env
 */__pycache__/
 */migrations/
-manage.py
+# manage.py
 django_project/__init__.py
