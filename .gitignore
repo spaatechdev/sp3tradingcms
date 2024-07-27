@@ -6,3 +6,4 @@ django_project/.env
 */migrations/
 # manage.py
 django_project/__init__.py
+media/product_images
