@@ -4,6 +4,7 @@ import os
 
 class Product_Type(models.Model):
     name = models.CharField(max_length=100)
+    description = models.CharField(max_length=10000, blank=True, null=True)
 
     def __str__(self):
         return str(self.pk)
@@ -13,7 +14,7 @@ class Product_Type(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=100)
-    description = models.CharField(max_length=10000)
+    description = models.CharField(max_length=10000, blank=True, null=True)
     image = models.ImageField(upload_to='product_images/')  # Change here
     product_type = models.ForeignKey(Product_Type, on_delete=models.CASCADE, default=None)
 
