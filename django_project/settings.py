@@ -34,7 +34,7 @@ DEBUG = True
 ALLOWED_HOSTS = ["back.sp3trading.com"]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://www.sp3trading.com',
+    'http://localhost:4200',
 ]
 
 # Application definition
