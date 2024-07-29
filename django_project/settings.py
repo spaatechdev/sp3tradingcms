@@ -31,10 +31,10 @@ SECRET_KEY = 'django-insecure-m#p&0&im(07oifb%f7!fe-p@dft=uydf7m88yk)!h%6iztm)yy
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["back.sp3trading.com"]
 
 CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:4200',
+    'https://www.sp3trading.com',
 ]
 
 # Application definition
