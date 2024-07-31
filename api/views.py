@@ -7,6 +7,7 @@ from django.utils.text import slugify
 from django.conf import settings
 from rest_framework import status
 from rest_framework.pagination import PageNumberPagination
+from django.db.models import Q
 
 class ProductTypeView(viewsets.ModelViewSet):
     queryset = Product_Type.objects.all()
@@ -65,19 +66,28 @@ class ProductView(viewsets.ModelViewSet):
     def list(self, request, *args, **kwargs):
         paginate = request.query_params.get('paginate', 'false').lower() == 'true'
 
+        # Apply pagination
         if paginate:
-            # Apply pagination
+            products = Product.objects.all().order_by('id')
+            product_type_id = request.query_params.get('product_type_id')
+            keyword = request.query_params.get('keyword')
+
+            if product_type_id:
+                products = products.filter(product_type_id=product_type_id)
+            if keyword:
+                products = products.filter(name__icontains=keyword)
+
             paginator = PageNumberPagination()
             paginator.page_size = 10  # Number of items per page
-            products = Product.objects.all()
             paginated_products = paginator.paginate_queryset(products, request)
             serializer = self.get_serializer(paginated_products, many=True)
             return paginator.get_paginated_response(serializer.data)
+
+        # Original functionality: return all products
         else:
-            # Original functionality: return all products
-            product_type_name = request.query_params.get('product_type', None)
-            if product_type_name:
-                products = Product.objects.filter(product_type__name__icontains=product_type_name)
+            product_type_id = request.query_params.get('product_type_id', None)
+            if product_type_id:
+                products = Product.objects.filter(product_type_id=product_type_id)
             else:
                 products = Product.objects.all()
 
