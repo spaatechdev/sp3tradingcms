@@ -1,0 +1,11 @@
+# created by virtualenv automatically
+
+venv/
+.idea/
+*/__pycache__/
+*/migrations/
+django_project/.env
+django_project/settings.py
+django_project/__init__.py
+media/product_images
+media/product_type_images
